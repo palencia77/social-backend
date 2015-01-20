@@ -7,7 +7,6 @@ def service_user_register(access_token, data):
     data['access_token'] = access_token
     data['type'] = APP_TYPE
     data['app'] = APP_TYPE
-    data['data'] = data
     try:
         r = requests.post(url, data=json.dumps(data))
         if r.status_code == 200:
@@ -15,7 +14,7 @@ def service_user_register(access_token, data):
         else:
             return error_handler(r.status_code)
     except Exception as e:
-        return {"error": "Error desconocido"}
+        return {"error": str(e)}
     
 def service_user_update_password(access_token, id_user, old_password, new_password):
     url = URL_SERVICES + "/user/update/password"
