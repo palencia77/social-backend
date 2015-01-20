@@ -1,0 +1,38 @@
+<div id="divModalPostRegister" class="modal-dialog modal-lg-n1" style="display: none;">
+	<div class="modal-content">
+		<!--Modal header-->
+		<div class="modal-header" data-bind="foreach: selectedPost">
+			<button type="button" class="close" data-bind='click: showModalPostList'><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title">
+					<small><label data-bind="text: owner.name"></label></small>
+					<img src="/public/images/nav-arrow-right-x32.png"/>
+					<small><label>Posts</label></small>
+					<img src="/public/images/nav-arrow-right-x32.png"/>
+					<strong><label data-bind="text: title"></label></strong>
+				</h3>
+		</div>
+		<!--Modal body-->
+		<div class="modal-body">
+			<!-- Post Register Nav tabs -->
+			<ul class="nav nav-tabs" id="postRegisterTab" role="tablist">
+			  <li class="active"><a id="tabDataPost" href="#divPostData" role="tab" data-toggle="tab">Data</a></li>
+			  <li><a href="#divPostResources" role="tab" data-toggle="tab" >Resources</a></li>
+			</ul>
+			<!-- Post Tab panes -->
+			<div class="tab-content">
+			  <div class="tab-pane fade in active" id="divPostData">
+			  	<br/>
+			  	{% include 'post/post_register_data.html' %}
+			  </div>
+			  <div class="tab-pane fade" id="divPostResources">
+			  	{% include 'post/post_register_resources.html' %}
+			  </div>
+			</div>
+		</div> <!-- Modal body -->
+		<div class="modal-footer">
+		  <button title="Cancel" type="button" class="btn btn-primary" data-bind='click: showModalPostList'><i class="fa fa-times fa-lg fa-fw"></i> Cancel</button>
+		  <button title="Save post" type="button" class="btn btn-primary" data-bind="click: savePost"><i class="fa fa-floppy-o fa-lg fa-fw"></i>Save</button>
+		</div>
+		
+	</div> <!--Fin class Modal content-->
+</div> <!--Fin class lg Modal-->

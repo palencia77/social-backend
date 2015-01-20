@@ -1,0 +1,72 @@
+<div class="row">
+	<form data-toggle="validator" role="form">
+		<div data-bind="foreach: selected_celebrity">
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Name</label> <input type="text" data-bind="value: name"
+						name="name" class="form-control" data-error="required"
+						placeholder="Enter the name" required>
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<label>Description</label>
+					<textarea name="description" data-bind="value: description"
+						class="form-control" data-error="Required" rows="3"
+						placeholder="Enter the description" required></textarea>
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<label>Email</label> <input type="email" name="email"
+						data-bind="value: email" class="form-control"
+						placeholder="Enter the email" data-error="Inavalid or required" required>
+					<div class="help-block with-errors"></div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">					
+					<label>Telephone</label> <input name="telephone" type="number"
+						data-bind="value: telephone" class="form-control"
+						placeholder="Enter the telephone"
+						data-error="Inavalid or required" required>
+					<div class="help-block with-errors"></div>			
+				</div>
+				<div class="form-group">
+					<label>Address</label>
+					<textarea name="address" data-bind="value: address"
+						class="form-control" data-error="Required" rows="3"
+						placeholder="Enter the address" required></textarea>
+					<div class="help-block with-errors"></div>
+				</div>
+				
+				<div class="form-group">						
+					<label>Web Site</label> <input name="web_site" type="url"
+						data-bind="value: web_site" class="form-control"
+						placeholder="Enter the web_site"
+						data-error="Invalid or required" required>
+					<div class="help-block with-errors"></div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">						
+					<label>Facebook Url</label> <input name="facebook"
+						data-bind="value: facebook" class="form-control"
+						placeholder="Facebook account" type="url" data-error="Invalid">
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">						
+					<label>Twitter Url</label> <input name="twitter"
+						data-bind="value: twitter" class="form-control"
+						placeholder="Twitter account" type="url" data-error="Invalid">
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">						
+					<label>Google+ Url</label> <input name="web_site"
+						data-bind="value: google_plus" class="form-control"
+						placeholder="Google+ account" type="url" data-error="Invalid">
+					<div class="help-block with-errors"></div>
+				</div>
+				
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Login</title>
+
+<!-- Bootstrap core CSS -->
+<script src="{{STATIC_URL}}js/jquery/jquery-1.9.1.min.js"></script>
+<script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
+<link href="{{STATIC_URL}}bootstrap/css/bootstrap.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+	{% if success %}
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert">
+			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		<strong>Success</strong> {{success}}
+	</div>
+	{% endif %} 
+	
+	{% if error %}
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert">
+			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>
+		<strong>Error!</strong> {{error}}
+	</div>
+	{% endif %}
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<div class="account-wall" align="center">
+					<img width="80%" class="profile-img"
+						src="/public/images/logo-heybees-login.png" alt="">
+					<hr>
+					<form id="login" class="form-signin" action="" method="POST">
+						{% csrf_token %} <input name="login" type="text"
+							class="form-control" placeholder="Username" required autofocus>
+						<input name="password" type="password" class="form-control"
+							placeholder="Password" required>
+						<button class="btn btn-lg btn-warning btn-block" type="submit"
+							name="submit">Sign in</button>
+						<a href="/user/recover/password" class="pull-right need-help">forgot
+							your password?</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

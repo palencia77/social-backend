@@ -1,0 +1,138 @@
+ {% include 'index.html' %}
+
+<div id="causeViewModel">
+
+	<div id="fb-root"></div>
+
+	{% if error%}
+	<div class="alert alert-dismissable alert-danger"
+		style="display: block;">{{error}}</div>
+	{% endif %} {% if message %}
+	<div class="alert alert-dismissable alert-success"
+		style="display: block;">{{message}}</div>
+	{% endif %}
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-md-8">
+					<p>
+						<strong><h4>Cause List</h4></strong>
+					</p>
+				</div>
+
+				<div class="col-md-4" align="right">
+					<button id="btnNewCause" title="New cause" data-toggle="modal" data-target="#causeModal" title="Create new cause"
+						data-bind="click: newCause" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <strong>New Cause</strong>
+					</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<tr>
+				<th></th>
+				<th width="25%">
+				<div class="form-group">
+    				<div class="input-group">
+      				<div style="cursor: pointer" data-bind="click:findAllCause" class="input-group-addon"><i class="fa fa-filter"></i></div>
+      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) findAllCause()"
+						type="text" data-bind="value: name_filter" name="name"
+						class="form-control input-sm"/>
+   				</div> 
+   				</div>
+				</th>
+				<th>Flys</th>
+				<th>Loves</th>
+				<th>Love Goal</th>
+				<th>% Love Goal</th>
+				<th>Closing Date</th>
+				<th>Status:
+				<select
+					data-bind='click: findAllCause, options: cause_status, value: selected_cause_status'></select>
+
+				</th>
+			</tr>
+			<tbody data-bind="foreach: causes">
+				<tr>
+					<td><img
+						data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+					<td data-bind="text: name"></td>
+					<td data-bind="text: fly_counter"></td>
+					<td data-bind="text: love_counter"></td>
+					<td data-bind="text: love_goal"></td>
+					<td data-bind="text: love_goal_percentage"></td>
+					<td data-bind="text: closing_date"></td>
+
+					<td>
+						<button type="button" data-toggle="modal" title="Edit cause"
+								data-target="#causeModal" data-bind='click: showCause'
+								class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Cause posts"
+								data-target="#postListModal" class="btn btn-default btn-sm"
+								data-bind='click: findPostsByBee'><i class="fa fa-comments fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Cause partners"
+								data-target="#causePartnersModal" data-bind="click: findPartners"
+								class="btn btn-default btn-sm"><i class="fa fa-group fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Cause ambassadors"
+								data-target="#causeCelebritiesModal" data-bind="click: findCelebrities"
+								class="btn btn-default btn-sm"><i class="fa fa-bullhorn fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Cause awards"
+								data-target="#causeAwardsModal" data-bind="click: findAwards"
+								class="btn btn-default btn-sm"><i class="fa fa-th-large"></i></button>						
+						<button type="button" data-toggle="modal" title="Cause Statistics"
+								data-target="#causeStatisticsModal"
+								class="btn btn-default btn-sm"
+								data-bind='click: findStatisticsByCause'><i class="fa fa-bar-chart-o fa-lg"></i></button>
+						<button name="btnActiveCause" data-bind="click: activeCause" title="Activate cause"
+								class="btn btn-default btn-sm"><i class="fa fa-play fa-lg"></i></button>
+						<button name="btnFinishCause" data-bind="click: finishCause" title="Finish cause"
+								class="btn btn-default btn-sm"><i class="fa fa-stop fa-lg"></i></button>
+					</td>
+					
+
+				</tr>
+			</tbody>
+		</table>
+		<div class="btn-group">
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click:causePreviewPages">&laquo;</a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination"
+				data-bind="foreach: cause_total_pages">
+				<li><a data-bind="text: $data, click: causeGoPage"></a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click: causeGoNextPages">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+	{% include 'cause/modal_cause_register.html' %}
+	{% include 'cause/cause_partners/modal_cause_partners.html' %}
+	{% include 'cause/cause_celebrities/modal_cause_celebrities.html' %}
+	{% include 'cause/cause_awards/modal_cause_awards.html' %}
+</div>
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBoOHqsFEKNW4jFfswtGRdEiJ_SxQ-1nWA&sensor=false">
+</script>
+<script src="{{STATIC_URL}}js/tools/map.js"></script>
+<div id="postViewModel">{% include 'post/modal_post_list.html' %}</div>
+<div id="causeStatisticsViewModel">{% include 'cause/cause_statistics/modal_cause_statistics.html' %}</div>
+<div id="postStatisticsViewModel">{% include 'post/modal_post_statistics.html' %}</div>
+<script src="{{STATIC_URL}}js/tools/pagination_tools.js"></script>
+<script src="{{STATIC_URL}}js/tools/image_tools.js"></script>
+<script src="{{STATIC_URL}}js/facebook/all.js"></script>
+<script src="{{STATIC_URL}}js/facebook/fb.js"></script>
+<script>window.fbInit(FB);</script>
+<script src="{{STATIC_URL}}js/models/resource.js"></script>
+<script src="{{STATIC_URL}}js/models/scope.js"></script>
+<script src="{{STATIC_URL}}js/models/cause.js"></script>
+<script src="{{STATIC_URL}}js/models/post.js"></script>
+<script src="{{STATIC_URL}}js/models/partner.js"></script>
+<script src="{{STATIC_URL}}js/models/celebrity.js"></script>
+<script src="{{STATIC_URL}}js/models/award.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmPost.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmCause.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/statistics/vmCauseStatistics.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/statistics/vmPostStatistics.js"></script>
+
+{% include 'index_end.html' %}

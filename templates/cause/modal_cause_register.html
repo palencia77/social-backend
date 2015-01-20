@@ -1,0 +1,51 @@
+<!-- Modal Cause -->
+<div id="causeModal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog modal-lg-n2">
+		<div class="modal-content">
+		<div class="modal-header">
+			
+			<button type="button" class="close" data-bind="click: closeCauseModal">
+				<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+			</button>
+				<h3 class="panel-title">Cause</h3>
+			</div>
+			<div class="modal-body">
+				<ul class="nav nav-tabs" id="causeRegisterTab" role="tablist">
+					<li class="active"><a id="tabDataCause" href="#divCauseData" role="tab"
+						data-toggle="tab">Data</a></li>
+					<li><a href="#divCauseContacts" role="tab" data-toggle="tab">Contacts</a></li>
+					<li><a href="#divCauseResources" role="tab" data-toggle="tab">Resources</a></li>
+					<li data-bind="click: showCauseMapLocation"><a href="#divCauseLocation" role="tab" data-toggle="tab">Location</a></li>
+				</ul>
+				<!-- Post Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="divCauseData">
+						<br> {% include 'cause/cause_register_data.html' %}
+					</div>
+
+					<div class="tab-pane fade" id="divCauseContacts">
+						<br> {% include 'cause/cause_register_contacts.html' %}
+					</div>
+					<div class="tab-pane fade" id="divCauseResources">
+						<br> {% include 'cause/cause_register_resources.html' %}
+					</div>
+					<div class="tab-pane fade" id="divCauseLocation">
+						<br> {% include 'cause/cause_register_map.html' %}
+					</div>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button title="Cancel" type="reset" data-bind="click: closeCauseModal" class="btn btn-primary">
+					<i class="fa fa-times fa-lg fa-fw"></i> Cancel
+				</button>
+				<button title="Save Cause"  type="button" data-bind="click: saveCause" class="btn btn-primary">
+					<i class="fa fa-floppy-o fa-lg fa-fw"></i> Save
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{{STATIC_URL}}js/models/subscope.js"></script>
+<script src="{{STATIC_URL}}js/models/contact.js"></script>

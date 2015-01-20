@@ -1,0 +1,40 @@
+<!-- Modal Cause -->
+<div id="celebrityModal" class="modal fade" tabindex="-1">
+	<div class="modal-dialog modal-lg-n2">
+		<div class="modal-content">
+			<div class="modal-header">
+
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="panel-title">Ambassador</h3>
+			</div>
+			<div class="modal-body">
+				<ul class="nav nav-tabs" id="celebrityRegisterTab" role="tablist">
+					<li class="active"><a id="tabDataCelebrity" href="#divCelebrityData" role="tab"
+						data-toggle="tab">Data</a></li>
+					<li><a href="#divCelebrityResources" role="tab"
+						data-toggle="tab">Resources</a></li>
+				</ul>
+				<!-- Post Tab panes -->
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="divCelebrityData">
+						<br> {% include 'celebrity/celebrity_register_data.html' %}
+					</div>
+					<div class="tab-pane fade" id="divCelebrityResources">
+						<br> {% include 'celebrity/celebrity_register_resources.html'%}
+					</div>
+				</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button title="Cancel" type="reset" data-dismiss="modal" class="btn btn-primary">
+					<i class="fa fa-times fa-lg fa-fw"></i> Cancel</button>
+				<button title="Save ambassador" data-bind="click: saveCelebrity" type="button"
+					class="btn btn-primary"><i class="fa fa-floppy-o fa-lg fa-fw"></i> Save</button>
+
+			</div>
+		</div>
+	</div>
+</div>

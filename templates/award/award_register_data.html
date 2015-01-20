@@ -1,0 +1,35 @@
+<div>
+	<form data-toggle="validator" class="form-horizontal" role="form">
+		<div data-bind="foreach: selectedAward">
+		 <div class="form-group" >
+		   <label for="txtAwardTitle" class="col-sm-1 control-label">Title:</label>
+		   <div class="col-sm-11">
+			   <input data-error="Required" type="text" class="form-control input-sm" id="txtAwardTitle" placeholder="Enter the title of the award"
+			   	   data-bind="value: title" required>
+		   </div>
+		 </div>
+		  <div class="form-group">
+		   <label for="txtAwardQuantity" class="col-sm-1 control-label">Quantity:</label>
+		   <div class="col-sm-1">
+			   <input data-error="Invalid or required" type="number" class="form-control input-sm" id="txtAwardQuantity" placeholder="Enter the quantity of the award"
+			   	   data-bind="value: quantity" required>
+			   	   <div class="help-block with-errors"></div>
+		   </div>
+		 </div>
+		 <div class="form-group">
+		   <label for="txtAwardAmount" class="col-sm-1 control-label">Amount Love:</label>
+		   <div class="col-sm-1">
+			   <input data-error="Invalid or required" type="number" class="form-control input-sm" id="txtAwardAmount" placeholder="Enter the amount love of the award"
+			   	   data-bind="value: amount_love" required>
+			   	   <div class="help-block with-errors"></div>
+		   </div>
+		 </div>
+		 </div>
+		 <div class="form-group">
+		   <label class="col-sm-1 control-label">Text:</label>
+		   <div class="col-sm-11">
+		   		<textarea id="awardWysiTextEditor" class="form-control" rows="7"></textarea>
+		   </div>
+		 </div>
+	</form>
+</div>

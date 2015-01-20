@@ -1,0 +1,62 @@
+<div >
+	<div class="row">
+	<div class="col-md-2">
+		<div align="center" class="panel panel-default">
+			<div align="left" class="panel-body">
+				<div class="form-group">
+					<label>Avatar:</label>
+					<div>
+						<img id="imgAvatarCelebrity" style="width: 154px; height: 177px"
+							data-bind="attr:{src: binary_content_avatar_celebrity}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="celebrityUploadAvatar" type="file" class="form-control"
+						name="inputUploadAvatar" onchange="uploadAvatar(this)"
+						related-img="imgAvatarCelebrity" />
+					<p class="help-block">Avatar of the cause.</p>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div align="left" class="panel panel-default">
+			<div align="left" class="panel-body">
+				<div class="form-group">
+					<label>Promotional photo:</label>
+					<div>
+						<img id="imgCausePromotional" style="width: 320px; height: 200px"
+							data-bind="attr:{src: binary_content_promotional_celebrity}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="causeUploadPromotional" type="file" class="form-control"
+						name="inputCausePromotional" onchange="uploadPromotional(this)"
+						related-img="imgCausePromotional" />
+					<p class="help-block">Promotional photo of the cause.</p>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+		<div align="left" class="panel panel-default">
+			<div align="left" class="panel-body">
+				<div class="form-group">
+					<label>Cover:</label>
+					<div>
+						<img id="imgCauseCover" style="width: 572px; height: 200px"
+							data-bind="attr:{src: binary_content_cover_celebrity}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="causeUploadCover" type="file" class="form-control"
+						name="inputCauseCover" onchange="uploadCover(this)"
+						related-img="imgCauseCover" />
+					<p class="help-block">Cover of the cause.</p>
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+
+	</div>
+
+</div>

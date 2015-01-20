@@ -1,0 +1,99 @@
+<div class="modal fade" id="subscopeListModal" tabindex="-1"
+	role="dialog" aria-labelledby="subscopeListModal" aria-hidden="true">
+	<div id="divSubscopeListModal" class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!--Modal header-->
+			<div class="modal-header"
+				data-bind="foreach: subscope_selected_scope">
+				<button type="button" data-bind="click: closeSubscopeDataModal"
+					class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="modal-title">
+					<small><label data-bind="text: name"></label></small> <img
+						src="/public/images/nav-arrow-right-x32.png" /> <strong>Subscopes</strong>
+				</h3>
+			</div>
+			<!--Modal body-->
+			<div class="modal-body">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-md-12" align="right">
+								<button data-bind="click: newSubscope"
+									class="btn btn-primary btn-sm">
+									<i class="fa fa-plus-circle"></i> <strong>New
+										Subscope</strong>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Table -->
+					<table id="subscopeTable" class="table table-hover">
+							<tr>
+								<th></th>
+								<th width="25%">
+									<div class="form-group">
+    									<div class="input-group">
+						      				<div style="cursor: pointer" data-bind="click:findSubscopesbyScopeStatus" class="input-group-addon"><i class="fa fa-filter"></i></div>
+						      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) findSubscopesbyScopeStatus()"
+												type="text" data-bind="value: name_filter" name="name"
+												class="form-control input-sm" />
+						   				</div> 
+   									</div>
+								</th>
+								<th>Description</th>
+								<th>Creation Date</th>
+								<th>Status: <select
+									data-bind='click: findSubscopesbyScopeStatus, options: subscope_status, value: selected_subscope_status'></select>
+								</th>
+							</tr>
+						<!-- Todo: Generate table body -->
+						<tbody data-bind="foreach: subscopes_byscope">
+							<tr>
+								<td><img data-bind="attr:{src: logo.binary_content}" alt=""
+									class="" /></td>
+								<td data-bind="text: name"></td>
+								<td data-bind="text: description"></td>
+								<td data-bind="text: creation_date"></td>
+								<td><button title="Edit subscope" type="button" data-bind="click: showSubscope"
+										class="btn btn-default btn-sm">
+										<i class="fa fa-pencil-square-o fa-lg"></i>
+									</button>
+
+									<button title="Active subscope" data-bind="click: activeSubscope"
+										name="btnActiveSubscope" title="Activate Scope"
+										class="btn btn-default btn-sm">
+										<i class="fa fa-check"></i>
+									</button>
+									<button title="Remove subscope" data-bind="click: removeSubscope"
+										name="btnRemoveSubscope" title="Remove Scope"
+										class="btn btn-default btn-sm">
+										<i class="fa fa-times"></i>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="btn-group">
+						<ul style="cursor: pointer" class="pagination">
+							<li><a data-bind="click: subscopePreviewPages">&laquo;</a></li>
+						</ul>
+						<ul style="cursor: pointer" class="pagination"
+							data-bind="foreach: subscope_total_pages">
+							<li><a data-bind="text: $data, click: subscopeGoPage"></a></li>
+						</ul>
+						<ul style="cursor: pointer" class="pagination">
+							<li><a data-bind="click: subscopeGoNextPages">&raquo;</a></li>
+						</ul>
+					</div>
+
+
+				</div>
+			</div>
+			<!--Modal footer-->
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+	{% include 'subscope/subscope_register_data.html' %}
+</div>

@@ -1,0 +1,17 @@
+<div>
+	<form class="form-horizontal" role="form">
+		 <div class="form-group" data-bind="foreach: selectedPost">
+		   <label for="txtCausePostTitle" class="col-sm-1 control-label">Title:</label>
+		   <div class="col-sm-11">
+			   <input type="text" class="form-control input-sm" id="txtCausePostTitle" placeholder="Enter the title of the post"
+			   	   data-bind="value: title">
+		   </div>
+		 </div>
+		 <div class="form-group">
+		   <label class="col-sm-1 control-label">Text:</label>
+		   <div class="col-sm-11">
+		   		<textarea id="postWysiTextEditor" class="form-control" rows="7"></textarea>
+		   </div>
+		 </div>
+	</form>
+</div>

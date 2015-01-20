@@ -1,0 +1,106 @@
+ {% include 'index.html' %}
+
+<div id="scopeViewModel">
+
+{% if error%}
+<div class="alert alert-dismissable alert-danger" style="display: block;">
+{{error}} 
+</div>
+{% endif %} 
+{% if message %}
+<div class="alert alert-dismissable alert-success" style="display: block;">
+	{{message}} 
+</div>
+{% endif %} 
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+  	<div class="row">
+	  <div class="col-md-9">
+	  	<p><strong><h4>Scope List</h4></strong></p>
+	  </div>
+	  <div class="col-md-3" align="right">
+			<button class="btn btn-primary" data-bind="click: clearSelectedScope" data-toggle="modal" data-target="#scopeModal">
+				<i class="fa fa-plus-circle"></i>
+				<strong>New Scope</strong>
+			</button>
+	  </div>
+	</div>
+  </div>
+
+  <!-- Table -->
+  <table id="scopeTable" class="table table-hover">
+	  	<tr>
+	  		<th></th>
+	  		<th width="25%">
+					<div class="form-group">
+    				<div class="input-group">
+      				<div style="cursor: pointer" data-bind="click:scopeFindAll" class="input-group-addon"><i class="fa fa-filter"></i></div>
+      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) scopeFindAll()"
+						type="text" data-bind="value: name_filter" name="name"
+						class="form-control input-sm" />
+   				</div> 
+   				</div>
+				</th>
+			<th>Description</th>		
+			<th>Status:
+			<select
+					data-bind='click: scopeFindAll, options: scope_status, value: selected_scope_status'></select>
+			</th>
+		</tr>
+	<!-- Todo: Generate table body -->
+	<tbody data-bind="foreach: scopes">
+		<tr>
+			<td>
+				<img data-bind="attr:{src: logo.binary_content}" alt="" class=""/>
+			</td>
+			<td data-bind="text: name"></td>
+			<td width="45%" data-bind="text: description"></td>
+			<td><button title="Edit scope" type="button" data-toggle="modal" data-target="#scopeModal" data-bind="click: showScope"
+				class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i></button>
+			<button title="Subscopes" type="button" data-toggle="modal" data-target="#subscopeListModal" data-bind="click : findSubscopesbyScope"
+				class="btn btn-default btn-sm"><i class="fa fa-sitemap fa-fw"></i></button>
+				
+			<button title="Active scope" data-bind="click: activeScope" name="btnActiveScope" title="Activate Scope"
+								class="btn btn-default btn-sm"><i class="fa fa-check"></i></button>
+			<button title="Remove scope" data-bind="click: removeScope" name="btnRemoveScope" title="Remove Scope"
+								class="btn btn-default btn-sm"><i class="fa fa-times"></i></button>
+				
+				</td>
+				
+		</tr>
+	</tbody>
+  </table>
+  
+  
+  <div class="btn-group">
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click:scopePreviewPages">&laquo;</a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination"
+				data-bind="foreach: scope_total_pages">
+				<li><a data-bind="text: $data, click: scopeGoPage"></a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click: scopeGoNextPages">&raquo;</a></li>
+			</ul>
+		</div>
+  
+  
+</div>
+
+{% include 'scope/modal_scope_register.html' %}
+</div>
+
+<div id="subscopeViewModel">{% include 'subscope/subscope_list.html' %}</div>
+<script src="{{STATIC_URL}}js/tools/pagination_tools.js"></script>
+<script src="{{STATIC_URL}}js/tools/image_tools.js"></script>
+<script src="{{STATIC_URL}}js/tools/check_file_extension.js"></script>
+<script src="{{STATIC_URL}}js/models/scope.js"></script>
+<script src="{{STATIC_URL}}js/models/subscope.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmSubScope.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmScope.js"></script>
+
+
+{% include 'index_end.html' %}

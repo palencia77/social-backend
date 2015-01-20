@@ -1,0 +1,70 @@
+<div class="modal fade" id="awardListModal" tabindex="-1" role="dialog"
+	aria-labelledby="awardListModal" aria-hidden="true">
+	<div id="divModalAwardList" class="modal-dialog modal-lg-n1">
+		<div class="modal-content">
+			<!--Modal header-->
+			<div class="modal-header" data-bind="foreach: selectedBee">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="modal-title">
+					<small><label data-bind="text: name"></label></small> <img
+						src="/public/images/nav-arrow-right-x32.png" /> <strong>Awards</strong>
+				</h3>
+			</div>
+			<!--Modal body-->
+			<div class="modal-body">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-md-12" align="right">
+								<button title="New award" class="btn btn-primary btn-sm"
+									data-bind='click: newAward'>
+									<i class="fa fa-plus-circle"></i> <strong>New Award</strong>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Table -->
+					<table id="awardTable" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Quantity</th>
+								<th>Status: <select
+									data-bind='click: findAwardsByBee, options: award_status, value: selected_award_status'></select>
+								</th>
+
+							</tr>
+						</thead>
+						<!-- Todo: Generate table body -->
+						<tbody data-bind="foreach: awards">
+							<tr>
+								<td data-bind="text: title"></td>
+								<td data-bind="text: quantity"></td>
+								<td><button title="Edit award" type="button"
+										data-bind='click: showAward' class="btn btn-default btn-sm">
+										<i class="fa fa-pencil-square-o fa-lg"></i>
+									</button>
+									<button title="Active award" name="btnActiveAward"
+										data-bind="click: activeAward" type="button"
+										class="btn btn-default btn-sm">
+										<i class="fa fa-check"></i>
+									</button>
+									<button title="Remove award" type="button"
+										data-bind='click: removeAward' class="btn btn-default btn-sm"
+										name="btnRemoveAward">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!--Modal footer-->
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+	{% include 'award/modal_award_register.html' %}
+</div>

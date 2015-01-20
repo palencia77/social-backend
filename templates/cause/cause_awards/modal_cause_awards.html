@@ -1,0 +1,106 @@
+<div class="modal fade" id="causeAwardsModal" tabindex="-1"
+	role="dialog" aria-labelledby="awardListModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!--Modal header-->
+			<div class="modal-header">
+				<button data-bind="click: closeCauseAwardsModal" type="button"
+					class="close">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="modal-title" data-bind="foreach: selected_cause">
+					<small><label data-bind="text: name"></label></small> <img
+						src="/public/images/nav-arrow-right-x32.png" /> <strong>Awards</strong>
+				</h3>
+			</div>
+			<!--Modal body-->
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<!-- Table Avaliable Awards -->
+						<div class="panel panel-default">
+							<div class="panel-heading">Avaliable Awards</div>
+							<div style="height: 350px; overflow-y: auto;">
+								<table id="awardsAvaliable" class="table table-hover">
+									<thead>
+										<tr>
+											<th></th>
+											<th>
+											<div class="form-group">
+    											<div class="input-group">
+							      					<div style="cursor: pointer" data-bind="click:findAwardsNotAssociated" class="input-group-addon"><i class="fa fa-filter"></i></div>
+								      					<input placeholder="Title" onkeyup="if(event.keyCode == 13) findAwardsNotAssociated()" type="text"
+																data-bind="value: name_filter_award_not_associated" name="name" class="form-control input-sm" />
+							   						</div> 
+   											</div>															
+											<th></th>
+										</tr>
+									</thead>
+									<!-- Todo: Generate table body -->
+									<tbody data-bind="foreach: cause_avaliable_awards">
+										<tr>
+											<td><img
+												data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+											<td data-bind="text: title"></td>
+											<td>
+												<button title="Add award" data-bind="click: addAward" type="button"
+													class="btn btn-default btn-sm">
+													<span class="glyphicon glyphicon-circle-arrow-right"></span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- Table Selected Awards-->
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Selected Awards</div>
+							<div style="height: 350px; overflow-y: auto;">
+								<table id="awardsSelected" class="table table-hover">
+									<thead>
+										<tr>
+											<th></th>
+											<th>
+											<div class="form-group">
+    											<div class="input-group">
+							      					<div style="cursor: pointer" data-bind="click:findAwardsAssociated" class="input-group-addon"><i class="fa fa-filter"></i></div>
+								      					<input placeholder="Title" onkeyup="if(event.keyCode == 13) findAwardsAssociated()" type="text"
+														data-bind="value: name_filter_award_associated" name="title" class="form-control input-sm" />
+							   						</div> 
+   											</div>
+											<th></th>
+										</tr>
+									</thead>
+									<!-- Todo: Generate table body -->
+									<tbody data-bind="foreach: cause_selected_awards">
+										<tr>
+											<td><img
+												data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+											<td data-bind="text: title"></td>
+											<td>
+												<button title="Remove award" data-bind="click: removeAward" type="button"
+													class="btn btn-default btn-sm">
+													<span class="glyphicon glyphicon-remove-circle"></span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Modal footer-->
+			<div class="modal-footer">
+				<button title="Cancel" data-bind="click: closeCauseAwardsModal" type="reset"
+					class="btn btn-primary"><i class="fa fa-times fa-lg fa-fw"></i>Cancel</button>
+				<button title="Save cause awards" type="button" data-bind="click: saveAwardsCause"
+					class="btn btn-primary"><i class="fa fa-floppy-o fa-lg fa-fw"></i>Save</button>
+			</div>
+		</div>
+	</div>
+</div>

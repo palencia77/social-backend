@@ -1,0 +1,62 @@
+ {% include 'index.html' %}
+
+	{% if error%}
+	<div class="alert alert-dismissable alert-danger"
+		style="display: block;">{{error}}</div>
+	{% endif %} {% if message %}
+	<div class="alert alert-dismissable alert-success"
+		style="display: block;">{{message}}</div>
+	{% endif %}
+
+	<div id="interactionTypeViewModel" class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-md-9">
+					<h4>
+						<strong>Interactions</strong>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div class="panel-body">
+		<form id="interactionForm" class="form-horizontal" role="form" data-toggle="validator"
+			data-bind="foreach: interactionsTypes">
+			
+			<div class="col-md-12">
+				<div class="col-md-3">
+					<label data-bind="text: name"></label>
+				</div>
+				<div class="col-md-6">
+					<div data-bind="foreach: interactions">
+						<div class="col-md-6" class="form-group">
+							<label for="txtValue" data-bind="text: name"
+								class="col-sm-4 control-label"></label>
+							<div class="col-sm-8">
+								<input type="number" class="form-control input-sm"
+									name="txtValue" data-bind="value: value" data-error="Required" required/>
+								<div class="help-block with-errors"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<button data-bind="click: updateInteraction" title="Update Interaction" type="button"
+						class="btn btn-primary">
+						<i class="fa fa-floppy-o fa-lg fa-fw"></i> Save
+					</button>
+				</div>
+			</div>	
+	</form>
+	</div>
+	<div class="panel-footer"></div>
+	<div></div>
+	</div>
+
+
+
+<script src="{{STATIC_URL}}js/models/interactionType.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmInteractionType.js"></script>
+
+{% include 'index_end.html' %}
