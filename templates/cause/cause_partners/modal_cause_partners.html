@@ -1,0 +1,110 @@
+<div class="modal fade" id="causePartnersModal" tabindex="-1"
+	role="dialog" aria-labelledby="partnerListModal" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<!--Modal header-->
+			<div class="modal-header">
+				<button data-bind="click: closeCausePartnersModal" type="button"
+					class="close">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="modal-title" data-bind="foreach: selected_cause">
+					<small><label data-bind="text: name"></label></small> <img
+						src="/public/images/nav-arrow-right-x32.png" /> <strong>Partners</strong>
+				</h3>
+			</div>
+			<!--Modal body-->
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<!-- Table Avaliable Partners -->
+						<div class="panel panel-default">
+							<div class="panel-heading">Avaliable Partners</div>
+							<div style="height: 350px; overflow-y: auto;">
+								<table id="partnersAvaliable" class="table table-hover">
+									<thead>
+										<tr>
+											<th></th>
+											<th>
+											<div class="form-group">
+    											<div class="input-group">
+							      					<div style="cursor: pointer" data-bind="click:findPartnersNotAssociated" class="input-group-addon"><i class="fa fa-filter"></i></div>
+								      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) findPartnersNotAssociated()" type="text"
+																data-bind="value: name_filter_partner_not_associated" name="name" class="form-control input-sm" />
+							   						</div> 
+   											</div>															
+											<th>Phone</th>
+											<th></th>
+										</tr>
+									</thead>
+									<!-- Todo: Generate table body -->
+									<tbody data-bind="foreach: cause_avaliable_partners">
+										<tr>
+											<td><img
+												data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+											<td data-bind="text: name"></td>
+											<td data-bind="text: telephone"></td>
+											<td>
+												<button title="Add partner" data-bind="click: addPartner" type="button"
+													class="btn btn-default btn-sm">
+													<span class="glyphicon glyphicon-circle-arrow-right"></span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- Table Selected Partners-->
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Selected Partners</div>
+							<div style="height: 350px; overflow-y: auto;">
+								<table id="partnersSelected" class="table table-hover">
+									<thead>
+										<tr>
+											<th></th>
+											<th>
+											<div class="form-group">
+    											<div class="input-group">
+							      					<div style="cursor: pointer" data-bind="click:findPartnersAssociated" class="input-group-addon"><i class="fa fa-filter"></i></div>
+								      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) findPartnersAssociated()" type="text"
+														data-bind="value: name_filter_partner_associated" name="name" class="form-control input-sm" />
+							   						</div> 
+   											</div>
+											<th>Phone</th>
+											<th></th>
+										</tr>
+									</thead>
+									<!-- Todo: Generate table body -->
+									<tbody data-bind="foreach: cause_selected_partners">
+										<tr>
+											<td><img
+												data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+											<td data-bind="text: name"></td>
+											<td data-bind="text: telephone"></td>
+											<td>
+												<button title="Remove partner" data-bind="click: removePartner" type="button"
+													class="btn btn-default btn-sm">
+													<span class="glyphicon glyphicon-remove-circle"></span>
+												</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--Modal footer-->
+			<div class="modal-footer">
+				<button title="Cancel" data-bind="click: closeCausePartnersModal" type="reset"
+					class="btn btn-primary"><i class="fa fa-times fa-lg fa-fw"></i>Cancel</button>
+				<button title="Save cause partners" type="button" data-bind="click: savePartnersCause"
+					class="btn btn-primary"><i class="fa fa-floppy-o fa-lg fa-fw"></i>Save</button>
+			</div>
+		</div>
+	</div>
+</div>

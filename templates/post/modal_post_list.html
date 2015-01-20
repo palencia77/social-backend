@@ -1,0 +1,74 @@
+<div class="modal fade" id="postListModal" tabindex="-1"
+	role="dialog" aria-labelledby="causePostListModal" aria-hidden="true">
+	<div id="divModalPostList" class="modal-dialog modal-lg-n1">
+		<div class="modal-content">
+			<!--Modal header-->
+			<div class="modal-header" data-bind="foreach: selectedBee">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h3 class="modal-title">
+					<small><label data-bind="text: name"></label></small> <img
+						src="/public/images/nav-arrow-right-x32.png" /> <strong>Posts</strong>
+				</h3>
+			</div>
+			<!--Modal body-->
+			<div class="modal-body">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-md-12" align="right">
+								<button title="New post" class="btn btn-primary btn-sm"
+									data-bind='click: newPost'>
+									<i class="fa fa-plus-circle"></i> <strong>New
+										Post</strong>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Table -->
+					<div style="height: 350px; overflow-y: auto;">
+					<table id="postTable" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Title</th>
+								<th>Fly counter</th>
+								<th>Love counter</th>
+								<th>Created date</th>
+								<th></th>
+							</tr>
+						</thead>
+						<!-- Todo: Generate table body -->
+						<tbody data-bind="foreach: posts">
+							<tr>
+								<td data-bind="text: title"></td>
+								<td data-bind="text: fly_counter"></td>
+								<td data-bind="text: love_counter"></td>
+								<td data-bind="text: created_date"></td>
+								<td><button title="Edit post" type="button" data-bind='click: showPost'
+										class="btn btn-default btn-sm">
+										<i class="fa fa-pencil-square-o fa-lg"></i>
+									</button>
+								<button title="Remove post" type="button"
+										data-bind='click: removePost'
+										class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								<button type="button" data-toggle="modal" title="Post Statistics"
+								data-target="#postStatisticsModal"
+								class="btn btn-default btn-sm"
+								data-bind='click: findStatisticsByPost'><i class="fa fa-bar-chart-o fa-lg"></i>
+									</button></td>									
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+			<!--Modal footer-->
+			<div class="modal-footer"></div>
+		</div>
+	</div>
+	{% include 'post/modal_post_register.html' %}
+</div>

@@ -1,0 +1,64 @@
+<div class="modal-dialog modal-lg" id="subscopeRegisterData"
+	style="display: none;">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">
+				<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+			</button>
+			<h4 class="modal-title" id="subscopeModalLabel">
+				<strong>Subscope</strong>
+			</h4>
+		</div>
+		<div class="modal-body" data-bind="foreach: selected_subscope">
+			<div class="row">
+				<div class="col-md-6">
+					<form role="form" data-toggle="validator">
+						<div class="form-group">
+							<label for="txtSubscopeName">Scope Name:</label> <input
+								type="text" class="form-control" id="txtSubcopeName"
+								placeholder="Enter the name" data-bind="value: name"
+								data-error="Required" required />
+							<div class="help-block with-errors"></div>
+						</div>
+						<div class="form-group">
+							<label for="txtSubscopeDescription">Description:</label>
+							<textarea class="form-control" rows="3"
+								placeholder="description of the scope"
+								id="txtSubscopeDescription" data-bind="value: description"
+								data-error="Required" required>
+							   </textarea>
+							<div class="help-block with-errors"></div>
+						</div>
+						<div id="subcope_scopes_combo" class="form-group">
+							<label>Scope</label><select
+								data-bind='options: scopes_combo, optionsText:"name", value: selected_scope_combo'
+								class="form-control"></select>
+
+						</div>
+
+					</form>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="subscopeUploadLogo">Scope Image:</label>
+						<div>
+							<img width="40%" id="imgSubscopeLogo"
+								data-bind="attr:{src: logo.binary_content}" alt=""
+								class="img-thumbnail" />
+						</div>
+						<input id="subscopeUploadLogo" type="file" class="form-control"
+							name="inputSubscopeLogo" onchange="previewImage(this)"
+							related-img="imgSubscopeLogo" />
+						<p class="help-block">The picture for the scope.</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button title="Cancel" type="button" class="btn btn-default"
+					data-bind="click: cancel"><i class="fa fa-times fa-lg fa-fw"></i> Cancel</button>
+				<button title="Save subscope" type="button" class="btn btn-primary"
+					data-bind="click: saveSubscope"><i class="fa fa-floppy-o fa-lg fa-fw"></i> Save</button>
+			</div>
+		</div>
+	</div>
+</div>

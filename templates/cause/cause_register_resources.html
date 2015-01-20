@@ -1,0 +1,72 @@
+<!-- Recursos -->
+<div >
+	<div class="row">
+	<div align="center" class="col-md-2">
+		<div align="left" class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group">
+					<label>Avatar:</label>
+					<div>
+						<img id="imgAvatarCause" style="width: 154px; height: 177px"
+							data-bind="attr:{src: binary_content_avatar}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="causeUploadAvatar" type="file"
+						name="inputUploadAvatar" onchange="uploadAvatar(this)"
+						related-img="imgAvatarCause" />
+				</div>
+			</div>
+		</div>
+		</div>
+		<div align="left" class="col-md-4">
+		<div align="left" class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group">
+					<label>Promotional photo:</label>
+					<div>
+						<img id="imgCausePromotional" style="width: 320px; height: 200px"
+							data-bind="attr:{src: binary_content_promotional}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="causeUploadPromotional" type="file"
+						name="inputCausePromotional" onchange="uploadPromotional(this)"
+						related-img="imgCausePromotional" />
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="form-group">
+					<label>Cover:</label>
+					<div>
+						<img style="width: 572px; height: 200px" id="imgCauseCover"
+							data-bind="attr:{src: binary_content_cover}" alt=""
+							class="img-thumbnail" />
+					</div>
+					<input id="causeUploadCover" type="file"
+						name="inputCauseCover" onchange="uploadCover(this)"
+						related-img="imgCauseCover" />
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div class="row">	
+		<div class="col-md-5">			
+			<div data-toggle="validator" role="form">
+				<div class="form-group">
+					<label><i class="fa fa-youtube-play fa-lg"></i>  Url video:</label>					
+					<div data-bind="foreach: selected_cause"> 
+						<input name="promotional_video" type="url" data-bind="value: url_promotional_video"
+							placeholder="Enter url video" class="form-control" data-error="Invalid url">
+						<div class="help-block with-errors"></div>
+					</div>
+				</div>
+				</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,64 @@
+<!-- Modal scope -->
+<div class="modal fade" id="scopeModal" tabindex="-1" role="dialog"
+	aria-labelledby="scopeModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+				</button>
+				<h4 class="modal-title" id="scopeModalLabel">
+					<strong>Scope</strong>
+				</h4>
+			</div>
+			<div class="modal-body" data-bind="foreach: selectedScope">
+				<div class="row">
+					<form role="form" data-toggle="validator">
+						<div class="col-md-6" >
+							<div class="form-group">
+								<label for="txtScopeName">Scope Name:</label> <input type="text"
+									class="form-control" id="txtScopeName" name="txtScopeName"
+									placeholder="Enter the name" data-bind="value: name"
+									data-error="Required" required/>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label for="txtScopeDescription">Description:</label>
+								<textarea class="form-control" rows="3" name="txtScopeDescription"
+									placeholder="description of the scope" id="txtScopeDescription"
+									data-bind="value: description" data-error="Required" required>
+							   </textarea>
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group">
+								<label for="txtScopeColor">Color:</label> <input
+									id="txtScopeColor" name="txtScopeColor" data-bind="value: color" type="color"
+									class="form-control" required/>
+							</div>
+
+						</div>
+					</form>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="scopeUploadLogo">Scope Image:</label>
+							<div>
+								<img id="imgScopeLogo"
+									data-bind="attr:{src: logo.binary_content}" alt=""
+									class="img-thumbnail" />
+							</div>
+							<input id="scopeUploadLogo" type="file" class="form-control"
+								name="inputScopeLogo" onchange="previewImage(this)"
+								related-img="imgScopeLogo" />
+							<p class="help-block">The picture for the scope.</p>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button title="Cancel" type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times fa-lg fa-fw"></i> Cancel</button>
+					<button title="Save scope" type="button" class="btn btn-primary"
+						data-bind="click: saveScope"><i class="fa fa-floppy-o fa-lg fa-fw"></i> Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

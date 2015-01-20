@@ -1,0 +1,81 @@
+
+<div>
+	<form data-toggle="validator" role="form"
+		data-bind="foreach: selected_contact">
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Name</label> <input data-bind="value: name"
+					class="form-control" placeholder="Enter the name" type="text"
+					data-error="Required" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label>Mobile phone</label> <input data-bind="value: mobile_phone"
+					class="form-control" placeholder="Enter the mobile phone"
+					type="number" data-error="Invalid or required" required>
+				<div class="help-block with-errors"></div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Telephone</label> <input data-bind="value: telephone"
+					class="form-control" placeholder="Enter the telephone"
+					type="number" data-error="Invalid or required" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input data-bind="value: email"
+					class="form-control" placeholder="Enter the email"
+					data-error="Invalid or required" type="email" required>
+				<div class="help-block with-errors"></div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				<label>Organization</label> <input data-bind="value: organization"
+					class="form-control" placeholder="Enter the organization"
+					type="text" data-error="Required" required>
+				<div class="help-block with-errors"></div>
+			</div>
+			<div class="form-group">
+				<label>Address</label>
+				<textarea data-bind="value: address" class="form-control" rows="2"
+					placeholder="Enter the address" type="text" data-error="Required"
+					required></textarea>
+				<div class="help-block with-errors"></div>
+			</div>
+		</div>
+	</form>
+	<div align="right">
+		<button title="Add Contact" data-bind="click: addContact" type="button"
+			class="btn btn-default">
+			<span class="glyphicon glyphicon-circle-arrow-right"></span>
+		</button>
+	</div>
+	<br> <br>
+	<table class="table table-hover">
+		<tr>
+			<th>Name</th>
+			<th>Mobile phone</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+		<tbody data-bind="foreach: causeContacts">
+			<tr data-bind="event : { dblclick: updateSelectedContact}"
+				style="cursor: pointer">
+				<td data-bind="text: name"></td>
+				<td data-bind="text: mobile_phone"></td>
+				<td data-bind="text: email"></td>
+				<td><button title="Edit Contact" type="button"
+						data-bind='click: updateSelectedContact'
+						class="btn btn-default btn-sm">
+						<i class="fa fa-pencil-square-o fa-lg"></i>
+					</button>
+				<button title="Remove Contact" data-bind='click: removeSelectedContact'
+						class="btn btn-default btn-sm">
+						<i class="fa fa-times"></i>
+					</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

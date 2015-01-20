@@ -1,0 +1,92 @@
+<!-- data of cause -->
+<div class="row">
+	<form data-toggle="validator" role="form">
+		<div  data-bind="foreach: selected_cause">
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Name</label> <input type="text" data-bind="value: name"
+						name="name" type="text" class="form-control" data-error="Required"
+						placeholder="Enter the name" required>
+					<div class="help-block with-errors"></div>
+				</div>					
+				<!-- 					<textarea name="description" data-bind="value: description" -->
+<!-- 						class="form-control" data-error="Required" rows="3" -->
+<!-- 						placeholder="Enter the description" required></textarea> -->
+<!-- 					<div class="help-block with-errors"></div> -->
+				<div class="form-group">
+					<label>Beneficiary</label> <input type="text" name="beneficiary"
+						data-bind="value: beneficiary" class="form-control"
+						placeholder="enter the beneficiary" data-error="Required" required>
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<label>Risk Classification</label> <input type="text"
+						name="risk_classification" data-bind="value: risk_classification"
+						data-error="Required" class="form-control"
+						placeholder="Enter the risk classification" required>
+					<div class="help-block with-errors"></div>
+				</div>
+				
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Closing Date</label>
+					<div class="input-group">
+						<input id="Date"
+							data-bind="datepicker: cause_closing_date, value:closing_date"
+							class="form-control" data-error="Invalid or required" required />
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button"
+								data-bind="click: setCauseClosingDate">now</button>
+						</span>
+					</div>
+					<div class="help-block with-errors"></div>
+
+				</div>
+
+				<div class="form-group">
+					<label>Goal</label>
+					<textarea name="goal" data-bind="value: goal" class="form-control"
+						rows="5" placeholder="Enter the goal" data-error="Required"
+						required></textarea>
+					<div class="help-block with-errors"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="form-group" data-bind="foreach: selected_cause">
+				<label>Love Goal</label> <input name="love_goal" type="number"
+					data-bind="value: love_goal" class="form-control"
+					placeholder="Enter the love goal" data-error="Invalid or required"
+					required>
+				<div class="help-block with-errors"></div>
+			</div>
+
+
+			<div class="form-group">
+				<label>Scope</label><select
+					data-bind='options: cause_scopes, optionsText:"name", value:selected_scope, click: findSubscopes'
+					class="form-control"></select>
+
+
+			</div>
+
+			<div class="form-group">
+				<fieldset id="fieldsetSubscopes" disabled="disabled">
+					<label>Sub-scope</label><select
+						data-bind='options: cause_subscopes, optionsText:"name", value: selected_subscope'
+						class="form-control"></select>
+				</fieldset>
+
+			</div>
+				</div>
+				<div class="form-group" >
+						<div class="col-sm-12"><label>Description</label></div>
+						<div class="col-sm-12">
+							<textarea id="causeWysiTextEditor" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+
+
+	</form>
+</div>

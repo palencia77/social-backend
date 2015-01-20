@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load dajaxice_templatetags %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Heybees - Backend</title> {% dajaxice_js_import %}
+
+<meta name="msapplication-TileImage" content="{{STATIC_URL}}images/icon/favicon-144.png">
+<link rel="shortcut icon" href="{{STATIC_URL}}images/icon/favicon.ico">
+<link rel="icon" sizes="16x16 32x32 64x64" href="{{STATIC_URL}}images/icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="64x64" href="{{STATIC_URL}}images/icon/favicon-64.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{STATIC_URL}}images/icon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{STATIC_URL}}images/icon/favicon-16.png">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="{{STATIC_URL}}images/icon/favicon-144.png">
+<meta name="msapplication-config" content="{{STATIC_URL}}images/icon/browserconfig.xml">		
+<!-- Bootstrap CSS and bootstrap datepicker CSS-->
+<link rel="stylesheet" href="/public/bootstrap/css/datepicker.css">
+<link rel="stylesheet" href="{{STATIC_URL}}bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="{{STATIC_URL}}bootstrap/css/custom.css">
+<link rel="stylesheet" href="{{STATIC_URL}}js/alertify/alertify.core.css" />
+<!-- <link rel="stylesheet" href="{{STATIC_URL}}js/alertify/alertify.default.css" /> -->
+<link rel="stylesheet" href="{{STATIC_URL}}js/alertify/alertify.bootstrap.css" />
+<script src="{{STATIC_URL}}js/alertify/alertify.min.js"></script>
+<script src="{{STATIC_URL}}js/tools/message_tools.js"></script>
+<!-- Load jQuery and bootstrap datepicker scripts -->
+
+<script src="{{STATIC_URL}}js/jquery/jquery-1.9.1.min.js"></script>
+<link href="{{STATIC_URL}}js/jquery/jquery-loadmask/jquery.loadmask.css" rel="stylesheet">
+<script src="{{STATIC_URL}}js/jquery/jquery-loadmask/jquery.loadmask.min.js"></script>
+
+
+<script src="{{STATIC_URL}}bootstrap/js/bootstrap-datepicker.js"></script>
+<script src="{{STATIC_URL}}bootstrap/js/validator.min.js"></script>
+
+
+
+<!-- Bootstrap wysihtml textarea component -->
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/wysihtml5/src/bootstrap-wysihtml5.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}/wysihtml5/src/bootstrap-wysihtml5-color.css" />
+
+<!-- Add custom CSS here -->
+<link href="{{STATIC_URL}}bootstrap/css/sb-admin.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="{{STATIC_URL}}bootstrap/font-awesome/css/font-awesome.min.css">
+<!-- Page Specific CSS -->
+<link rel="stylesheet"
+	href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+
+<!-- Knockout 3.1.0 -->
+<script src="{{STATIC_URL}}knockout-3.1.0/knockout-3.1.0.js"></script>
+<script src="{{STATIC_URL}}knockout-3.1.0/custom-bindings.js"></script>
+
+<!-- Libraries needed to show wysihtml component -->
+<script src="{{STATIC_URL}}/wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
+<script src="{{STATIC_URL}}/wysihtml5/src/bootstrap3-wysihtml5.js"></script>
+
+<script type="text/javascript">
+//active class to control the left nav
+$(document).ready(function () {
+    var url = window.location;
+// Will only work if string in href matches with location
+    $('ul.nav.navbar-nav.side-nav a[href="' + url + '"]').parent().addClass('active');
+
+// Will also work for relative and absolute hrefs
+    $('ul.nav.navbar-nav.side-nav a').filter(function () {
+        return this.href == url;
+    }).parent().addClass('active').parent().parent().addClass('active');
+});
+</script>
+
+</head>
+
+<body>
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Heybees Backend</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">
+					<li><a href="/cause/"><i class="fa fa-globe fa-fw"></i> Causes</a></li>
+					<li><a href="/scope/"><i class="fa fa-sitemap fa-fw"></i> Scopes</a></li>
+					<li><a href="/partner/"><i class="fa fa-group fa-fw"></i> Partners</a></li>
+					<li><a href="/ambassador/"><i class="fa fa-bullhorn fa-fw"></i> Ambassadors</a></li>
+					<li><a href="/user/admin/"><i class="fa fa-lock fa-fw"></i> Security</a></li>
+					<li><a href="/interaction"><i class="fa fa-globe fa-fw"></i> Interaction</a></li>
+					<li class="logo">
+						<img width="40%" style="" src="/public/images/heybees_icon_gray.png"/>
+					</li>
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right navbar-user">
+					<li class="dropdown user-dropdown"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"><img
+							src="{{avatar_src}}"></img> {{name}} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a data-toggle="modal" data-target="#userProfileModal" href="" onclick="userFindById()"><img
+							src="{{avatar_src}}"></img> Profile</a></li>
+							<li><a data-toggle="modal" data-target="#changePasswordModal" href="" onclick="userFindById()"><i class="fa fa-gear"></i> Change Password</a></li>
+							<li class="divider"></li>
+							<li><a href="/user/logout"><i class="fa fa-power-off"></i>
+									Log Out</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</nav>
+		<div id="userProfileViewModel">{% include 'security/modal_user_profile.html' %}
+		{% include 'security/modal_change_password.html' %}
+		
+		</div>

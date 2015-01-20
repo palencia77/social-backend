@@ -1,0 +1,83 @@
+ {% include 'index.html' %}
+
+<div id="userViewModel">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-md-9">
+					<p>
+						<strong><h4>User List</h4></strong>
+					</p>
+				</div>
+				<div class="col-md-3" align="right">
+					<button title="New user" class="btn btn-primary"
+						data-bind="click: clearSelectedUser" data-toggle="modal"
+						data-target="#userModal">
+						<i class="fa fa-plus-circle"></i> <strong>New
+							User</strong>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Table -->
+		<table id="userTable" class="table table-hover">
+				<tr>
+				<th></th>
+					<th width="25%">
+					<div class="form-group">
+    				<div class="input-group">
+      				<div style="cursor: pointer" data-bind="click:userFindAll" class="input-group-addon"><i class="fa fa-filter"></i></div>
+      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) userFindAll()"
+						type="text" data-bind="value: name_filter" name="name"
+						class="form-control input-sm" />
+   				</div> 
+   				</div>
+				</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Status: <select
+						data-bind='click: userFindAll, options: user_status, value: selected_status_user'></select>
+					</th>
+				</tr>
+			<tbody data-bind="foreach: users">
+				<!--<tr data-bind="click: showUser" data-toggle="modal" data-target="#userModal" style="cursor: pointer">-->
+				<tr>
+				<td>
+				<img data-bind="attr:{src: avatar_src}" alt="" class=""/>
+			</td>
+					<td data-bind="text: full_name"></td>
+					<td data-bind="text: email"></td>
+					<td data-bind="text: phone"></td>
+					<td>
+						<button title="Active user" name="btnActiveUser" data-bind="click: activeUser"
+							type="button" class="btn btn-default btn-sm"><i class="fa fa-check"></i></button>
+						<button title="Remove user" name="btnRemoveUser" data-bind="click: removeUser"
+							type="button" class="btn btn-default btn-sm"><i class="fa fa-times"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div class="btn-group">
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click:userPreviewPages">&laquo;</a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination"
+				data-bind="foreach: user_total_pages">
+				<li><a data-bind="text: $data, click: userGoPage"></a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click: userGoNextPages">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+	{% include 'security/modal_user_register.html' %}
+</div>
+<script src="{{STATIC_URL}}js/tools/image_tools.js"></script>
+<script src="{{STATIC_URL}}js/tools/pagination_tools.js"></script>
+<script src="{{STATIC_URL}}js/models/user.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmUser.js"></script>
+{% include 'index_end.html' %}

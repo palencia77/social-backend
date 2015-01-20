@@ -1,0 +1,106 @@
+ {% include 'index.html' %}
+
+<div id="partnerViewModel">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<div class="row">
+				<div class="col-md-8">
+					<p>
+						<strong><h4>Partner List</h4></strong>
+					</p>
+				</div>
+
+				<div class="col-md-4" align="right">
+					<button title="New Partner" data-bind="click: newPartner" data-toggle="modal"
+						data-target="#partnerModal" class="btn btn-primary">
+						<i class="fa fa-plus-circle"></i> <strong>New Partner</strong>
+					</button>
+				</div>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<tr>
+				<th></th>
+					<th width="25%">
+					<div class="form-group">
+    				<div class="input-group">
+      				<div style="cursor: pointer" data-bind="click:findAllPartners" class="input-group-addon"><i class="fa fa-filter"></i></div>
+      					<input placeholder="Name" onkeyup="if(event.keyCode == 13) findAllPartners()"
+						type="text" data-bind="value: name_filter" name="name"
+						class="form-control input-sm" />
+   				</div> 
+   				</div>
+				</th>
+				<th>Telephone</th>
+				<th>Email</th>
+				<th>Loves</th>
+				<th>Status:
+				<select
+					data-bind='click: findAllPartners, options: partner_status, value: selected_partner_status'></select>
+
+				</th>
+
+			</tr>
+			<tbody data-bind="foreach: partners">
+				<tr>
+					<td><img
+						data-bind="attr:{src: avatar_src}" alt="" class="" /></td>
+					<td data-bind="text: name"></td>
+					<td data-bind="text: telephone"></td>
+					<td data-bind="text: email"></td>
+					<td data-bind="text: love_counter"></td>
+
+					<td><button title="Edit partner" data-bind="click: showPartner" type="button"
+							data-toggle="modal" data-target="#partnerModal"
+							class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Partner posts"
+								data-target="#postListModal" class="btn btn-default btn-sm"
+								data-bind='click: findPostsByBee'><i class="fa fa-comments fa-lg"></i></button>
+						<button type="button" data-toggle="modal" title="Partner awards"
+							data-target="#awardListModal" class="btn btn-default btn-sm"
+							data-bind='click: findSelectedBee'>
+							<i class="fa fa-th-large"></i>
+						</button>
+					
+						<button title="Active Partner" name="btnActivePartner" data-bind="click: activePartner"
+							type="button" class="btn btn-default btn-sm"><i class="fa fa-check"></i></button>
+						<button title="Remove Partner" name="btnRemovePartner" data-bind="click: removePartner"
+							type="button" class="btn btn-default btn-sm"><i class="fa fa-times"></i></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="btn-group">
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click:partnerPreviewPages">&laquo;</a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination"
+				data-bind="foreach: partner_total_pages">
+				<li><a data-bind="text: $data, click: partnerGoPage"></a></li>
+			</ul>
+			<ul style="cursor: pointer" class="pagination">
+				<li><a data-bind="click: partnerGoNextPages">&raquo;</a></li>
+			</ul>
+		</div>
+
+
+
+	</div>
+	{% include 'partner/modal_partner_register.html' %}
+</div>
+<div id="postViewModel">{% include 'post/modal_post_list.html' %}</div>
+<div id="postStatisticsViewModel">{% include 'post/modal_post_statistics.html' %}</div>
+<div id="awardViewModel">{% include 'award/modal_award_list.html' %}</div>
+<script src="{{STATIC_URL}}js/tools/pagination_tools.js"></script>
+<script src="{{STATIC_URL}}js/tools/image_tools.js"></script>
+<script src="{{STATIC_URL}}js/models/resource.js"></script>
+<script src="{{STATIC_URL}}js/models/partner.js"></script>
+<script src="{{STATIC_URL}}js/models/post.js"></script>
+<script src="{{STATIC_URL}}js/models/award.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmPost.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmAward.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/statistics/vmPostStatistics.js"></script>
+<script src="{{STATIC_URL}}js/viewmodels/vmPartner.js"></script>
+{% include 'index_end.html' %}
