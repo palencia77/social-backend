@@ -1,6 +1,6 @@
             // Facebook JS SDK initialization options
 	    window.fbInit = function(FB) {
-                FB.init({appId: '916744205020906', status: true, cookie: true, xfbml: true});
+                FB.init({appId: '644934398963140', status: true, cookie: true, xfbml: true});
                 /* All the events registered */
                 FB.Event.subscribe('auth.login', function(response) {
                     // do something with response
@@ -105,6 +105,6 @@
 		 	 if (d.getElementById(id))
 				 return;
 			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=916744205020906&version=v2.0";
+			  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=644934398963140&version=v2.0";
 			  fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
