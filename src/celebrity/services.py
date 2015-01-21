@@ -1,6 +1,6 @@
 import json
 import requests
-from heybeesbackend.settings import URL_SERVICES
+from backend.settings import URL_SERVICES
 
 '''
 @summary: Service that get all celebrities by status

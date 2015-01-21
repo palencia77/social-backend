@@ -123,7 +123,7 @@ def recover_password(request):
                     context = RequestContext(request, {'error':error})
                     return HttpResponse(loader.get_template("security/recover_password.html").render(context))
                 else:
-                    success = "Heybees sent you an email for your password recovery"
+                    success = "We sent you an email for your password recovery"
                     context = RequestContext(request, {'success':success})
                     response = render_to_response("security/recover_password.html",context)
                     return response

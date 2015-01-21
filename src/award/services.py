@@ -1,6 +1,6 @@
 import json
 import requests
-from heybeesbackend.settings import URL_SERVICES, APP_TYPE
+from backend.settings import URL_SERVICES, APP_TYPE
 
 '''
 @summary: Service to get all awards of a cause

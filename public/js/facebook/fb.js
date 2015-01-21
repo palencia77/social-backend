@@ -63,8 +63,8 @@
 
             }
             function showStream(name,text,id_resource,url){
-                FB.api('/me', function(response) {                   
-                    streamPublish(name, text,"Heybees Web", url, "Heybees",'www.heybees.com:5000/resource/public/view?id_resource='+id_resource);
+                FB.api('/me', function(response) {
+                    streamPublish(name, text,"Social Network", url, "SocialNetwork",'www.domain.com:5000/resource/public/view?id_resource='+id_resource);
                 });
             }
 

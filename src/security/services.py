@@ -1,6 +1,6 @@
 import json
 import requests
-from heybeesbackend.settings import URL_SERVICES, APP_TYPE
+from backend.settings import URL_SERVICES, APP_TYPE
 
 def service_user_register(access_token, data):
     url = URL_SERVICES + "/user/register"

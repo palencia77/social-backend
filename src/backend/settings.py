@@ -1,5 +1,5 @@
 """
-Django settings for heybeesbackend project.
+Django settings for backend project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -45,7 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'dajax',
     'dajaxice',
-    'heybeesbackend',
+    'backend',
     'security',
     'cause',
     'scope',
@@ -60,9 +60,9 @@ INSTALLED_APPS = (
 )
 
 
-ROOT_URLCONF = 'heybeesbackend.urls'
+ROOT_URLCONF = 'backend.urls'
 
-WSGI_APPLICATION = 'heybeesbackend.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database

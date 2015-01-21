@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    #url(r'^$', 'heybeesbackend.views.home', name='home'),
+    #url(r'^$', 'backend.views.home', name='home'),
     url(r'^$', include('security.urls')),
     url(r'^user/' , include('security.urls')),
     url(r'^cause/' , include('cause.urls')),
