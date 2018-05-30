@@ -1,0 +1,5 @@
+Django==1.6
+#django-dajaxice==0.2
+dj-dajaxice==0.8.2
+Dajax==1.0
+django-dajax==0.9.2
