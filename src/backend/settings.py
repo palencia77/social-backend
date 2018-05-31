@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os.path
+import django_heroku
 
 # BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PATH_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.dirname(__file__)), os.pardir))
@@ -190,3 +191,5 @@ MEDIA_ROOT = ''
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
+
+django_heroku.settings(locals())
