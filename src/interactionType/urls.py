@@ -3,8 +3,8 @@ from django.contrib import admin
 from views import *
 
 
-urlpatterns = patterns('',
+urlpatterns = [
    
     url(r'^', interaction_list_init)
       
-)
+]
