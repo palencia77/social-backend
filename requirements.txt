@@ -7,4 +7,5 @@ django-dajaxice-1.9==0.8.1.1
 django-dajaxice-me==0.8
 Dajax==1.0
 django-heroku==0.3.1
+requests==2.13.0
 gunicorn==19.8.1
