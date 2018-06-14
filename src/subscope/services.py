@@ -76,6 +76,29 @@ def service_subscope_update(access_token,id_scope,subscope,with_resource,resourc
     except Exception as e:
         return {'error':e}
 
+
+'''
+@summary: update status of subscope
+@param id_subscope
+@param status: 
+'''
+def service_subscope_update_status(access_token, id_subscope, status):
+    url = URL_SERVICES + "/subscope/update/status"
+    data = {}
+    data['access_token'] = access_token
+    data['id_subscope'] = id_subscope
+    data['status'] = status
+
+    try:
+        r = requests.post(url, data=json.dumps(data))
+        if r.status_code == 200:
+            return r.json()
+        else:
+            return Error_Handler(r.status_code)
+    except Exception as e:
+        return e
+
+
 def Error_Handler(status_error):
     if status_error == 400:
         return {"error":"Error en datos enviados"}

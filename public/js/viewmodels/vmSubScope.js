@@ -262,14 +262,15 @@ function SubScopeViewModel() {
 		alertify.confirm(message_confirmation, function (e) {
 			if (e) {
 				$("#subscopeRegisterData").mask(loading);
-				Dajaxice.scope.dajax_scope_update_status(subscopeUpdateCallback, {'id_scope' : subscope.id_subscope, 'status': 'INACTIVE'});
+				Dajaxice.subscope.dajax_subscope_update_status(subscopeUpdateCallback, {'id_subscope' : subscope.id_subscope, 'status': 'INACTIVE'});
 			}
 		});
 	};
+
 	activeSubscope = function(subscope){
 		alertify.confirm(message_confirmation, function (e) {
 			if (e) {
-				Dajaxice.scope.dajax_scope_update_status(subscopeUpdateCallback, {'id_scope' : subscope.id_subscope, 'status': 'INACTIVE'});
+				Dajaxice.subscope.dajax_subscope_update_status(subscopeUpdateCallback, {'id_subscope' : subscope.id_subscope, 'status': 'INACTIVE'});
 			}
 		});
 	};

@@ -79,7 +79,7 @@ def service_scope_update(access_token,scope,with_resource,resource=None):
    
 '''
 @summary: update status of scope
-@param id_cause
+@param id_scope
 @param status: 
 '''
 def service_scope_update_status(access_token, id_scope, status):
@@ -87,7 +87,7 @@ def service_scope_update_status(access_token, id_scope, status):
     data={}
     data['access_token'] = access_token
     data['id_scope'] = id_scope
-    data ['status'] = status
+    data['status'] = status
                 
     try:
         r = requests.post(url, data=json.dumps(data))

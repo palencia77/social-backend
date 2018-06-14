@@ -23,3 +23,9 @@ def dajax_subscope_update(request,id_scope, subscope, with_resource, resource):
         access_token = request.COOKIES['access_token']
         result = service_subscope_update(access_token,id_scope,subscope,with_resource,resource)
         return json.dumps(result)
+
+@dajaxice_register
+def dajax_subscope_update_status(request, id_subscope, status):
+    access_token = request.COOKIES['access_token']
+    result = service_subscope_update_status(access_token, id_subscope, status)
+    return json.dumps(result)
